@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\oralb\OneDrive\Рабочий стол\OOPFinal\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+2732926150.index
+2311259166.index
