@@ -1,0 +1,152 @@
+package Project;
+import java.util.Scanner;
+
+import  Enums.Language; 
+
+public abstract class User {
+    // Fields
+    private String id;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String userInfo;
+    private int age;
+    private boolean status;
+    private Language language;
+    private boolean isLoggedIn;
+
+    // Constructor 
+    public User(String id, String password, String firstName, String lastName, 
+                String userInfo, int age, boolean status, Language language,boolean isLoggedIn) {
+        this.id = id;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userInfo = userInfo;
+        this.age = age;
+        this.status = status;
+        this.language = language;
+        this.isLoggedIn = isLoggedIn;
+    }
+
+    // Getters
+    public String getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getUserInfo() {
+        return userInfo;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    // Setters
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setUserInfo(String userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    
+    // Abstract methods to be implemented by subclasses
+    public abstract void viewMenu();
+    public abstract void viewNews();
+    public abstract void viewProfile();
+    public abstract void doResearch();
+    public abstract void sendRequest();
+
+    
+    public void logIn() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter ID: ");
+        String enteredId = scanner.nextLine();
+
+        System.out.print("Enter Password: ");
+        String enteredPassword = scanner.nextLine();
+
+        // Assuming there is a static method in the Database class to get the user list
+        List<User> users = Database.getUsers();
+        for (User user : users) {
+            if (user.getId().equals(enteredId) && user.getPassword().equals(enteredPassword)) {
+                System.out.println("Login successful");
+                // Logic for successful login
+                return;
+            }
+        }
+
+        System.out.println("Login failed");
+        // Logic for failed login
+    }
+
+
+    public void logOut() {
+        
+    }
+
+    public void subscribeToMagazine() {
+       
+    }
+
+    public void searchNews() {
+    
+    }
+
+    public void viewRequest() {
+       
+    }
+
+    public void changePassword() {
+       
+    }
+    
+}
+
