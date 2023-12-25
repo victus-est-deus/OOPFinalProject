@@ -120,6 +120,8 @@ public class Database {
     }
 
     // Method to show all users
- 
+    public  List<User> getUsers() {
+        return users;
+    }
 }
 

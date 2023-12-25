@@ -8,7 +8,7 @@ import Project.User;
 public abstract class Employee extends User {
     // Additional fields
     private Date hireDate;
-    private Vector<Message> myMessages; 
+    private Vector<Message> myMessages; // Assuming Messages is a class you've defined
 
     // Constructor
     public Employee(String id, String password, String firstName, String lastName, 

@@ -8,13 +8,13 @@ import Project.User;
 public abstract class Employee extends User {
     // Additional fields
     private Date hireDate;
-    private Vector<Message> myMessages; 
+    private Vector<Message> myMessages; // Assuming Messages is a class you've defined
 
     // Constructor
     public Employee(String id, String password, String firstName, String lastName, 
-                    String userInfo, int age, boolean status, Language language,boolean isLoggedIn, 
+                    String userInfo, int age, boolean status, Language language, 
                     Date hireDate, Vector<Message> myMessages) {
-        super(id, password, firstName, lastName, userInfo, age, status, language,isLoggedIn);
+        super(id, password, firstName, lastName, userInfo, age, status, language);
         this.hireDate = hireDate;
         this.myMessages = myMessages;
     }

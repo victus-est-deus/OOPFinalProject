@@ -17,10 +17,10 @@ public class Teacher extends Employee {
 
     // Constructor
     public Teacher(String id, String password, String firstName, String lastName, 
-                   String userInfo, int age, boolean status, Language language,boolean isLoggedIn ,
+                   String userInfo, int age, boolean status, Language language, 
                    Date hireDate, Vector<Message> myMessages, Faculty faculty, 
                    TeacherPos post, double rate, Vector<Course> courses) {
-        super(id, password, firstName, lastName, userInfo, age, status, language,isLoggedIn, hireDate, myMessages);
+        super(id, password, firstName, lastName, userInfo, age, status, language, hireDate, myMessages);
         this.faculty = faculty;
         this.post = post;
         this.rate = rate;

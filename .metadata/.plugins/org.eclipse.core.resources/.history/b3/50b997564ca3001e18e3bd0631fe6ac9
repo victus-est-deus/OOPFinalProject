@@ -44,48 +44,36 @@ public class Database {
 		HashSet <User> deans = new HashSet <User>();
 		HashSet <User> managers = new HashSet <User>();
 		HashSet <User> librarian = new HashSet <User>();
-		HashSet <User> rector = new HashSet<User>();
 //		admin.add(Admin.getAdmin());
-		Database.users.put(TypeUser.TEACHER, teachers);
-		Database.users.put(TypeUser.STUDENT, students);
-		Database.users.put(TypeUser.DEAN, deans);
-		Database.users.put(TypeUser.ADMIN, admin);
-		Database.users.put(TypeUser.MANAGER, managers);
-		Database.users.put(TypeUser.LIBRARIAN, librarian);
-		Database.users.put(TypeUser.RECTOR, rector);
+		DataBase.users.put(TypeUser.TEACHER, teachers);
+		DataBase.users.put(TypeUser.STUDENT, students);
+		DataBase.users.put(TypeUser.DEAN, deans);
+		DataBase.users.put(TypeUser.ADMIN, admin);
+		DataBase.users.put(TypeUser.MANAGER, managers);
+		DataBase.users.put(TypeUser.LIBRARIAN, librarian);
 		
-		Database.news.put("Official", new Vector<News>() );
-		Database.news.put("Upcoming events", new Vector<News>() );
-		Database.news.put("Lost and found", new Vector<News>() );
+		DataBase.news.put("Official", new Vector<News>() );
+		DataBase.news.put("Upcoming events", new Vector<News>() );
+		DataBase.news.put("Lost and found", new Vector<News>() );
 
 
 	}
     // Methods for serialization and deserialization
-	public static void serilaizeUsers() throws IOException {
-		try {
-			FileOutputStream fos = new FileOutputStream("users.out");
-			ObjectOutputStream user = new ObjectOutputStream(fos);
-			user.writeObject(users);
-			user.flush();
-			user.close();
-			fos.close();
-		} 
-		catch(Exception e) {e.getStackTrace();}
+    public void serializeUsers() {
+        // Logic to serialize users
     }
-	
-	@SuppressWarnings("unchecked")
-	public static HashMap <TypeUser, HashSet <User> > deserializeUsers() throws IOException, ClassNotFoundException {
-		try {
-			FileInputStream fis = new FileInputStream("users.out");
-			ObjectInputStream user = new ObjectInputStream(fis);
-			users = (HashMap <TypeUser, HashSet <User> >)user.readObject();
-			user.close();
-			fis.close();
-		} 
-		catch(Exception e) {e.getStackTrace();}
-		
-		return users;
-	}
+
+    public void deserializeUsers() {
+        // Logic to deserialize users
+    }
+
+    public void serializeResearches() {
+        // Logic to serialize researches
+    }
+
+    public void deserializeResearches() {
+        // Logic to deserialize researches
+    }
 
     public void serializeRequests() {
         // Logic to serialize requests
@@ -120,6 +108,8 @@ public class Database {
     }
 
     // Method to show all users
- 
+    public  List<User> getUsers() {
+        return users;
+    }
 }
 

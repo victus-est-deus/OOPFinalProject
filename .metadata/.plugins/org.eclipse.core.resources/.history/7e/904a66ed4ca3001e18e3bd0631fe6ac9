@@ -1,7 +1,7 @@
 package Project;
 import java.util.Scanner;
 
-import  Enums.*; 
+import  Enums.Language; 
 
 public abstract class User {
     // Fields
@@ -104,37 +104,28 @@ public abstract class User {
     public abstract void sendRequest();
 
     
-    public void logIn() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter ID: ");
-        String enteredId = scanner.nextLine();
-
-        System.out.print("Enter Password: ");
-        String enteredPassword = scanner.nextLine();
-
-        boolean loginSuccessful = false;
-
-        for (TypeUser userType : Database.users.keySet()) {
-            for (User user : Database.users.get(userType)) {
-                if (user.getId().equals(enteredId) && user.getPassword().equals(enteredPassword)) {
-                    loginSuccessful = true;
-                    isLoggedIn = true;
-                    break;
-                }
-            }
-            if (loginSuccessful) {
-                break;
-            }
-        }
-
-        if (loginSuccessful) {
-            System.out.println("Login successful.");
-        } else {
-            System.out.println("Login failed.");
-        }
-    }
-
+//    public void logIn() {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.print("Enter ID: ");
+//        String enteredId = scanner.nextLine();
+//
+//        System.out.print("Enter Password: ");
+//        String enteredPassword = scanner.nextLine();
+//
+//        
+//        List<User> users = Database.getUsers();
+//        for (User user : users) {
+//            if (user.getId().equals(enteredId) && user.getPassword().equals(enteredPassword)) {
+//                System.out.println("Login successful");
+//                isLoggedIn = true;
+//                return;
+//            }
+//        }
+//
+//        System.out.println("Login failed");
+//        // Logic for failed login
+//    }
 
 
     public void logOut() {
