@@ -1,0 +1,8 @@
+package Project.Employee;
+import Enums.*;
+import Project.Employee.Employee;
+
+public class Dean extends Employee {
+	private Faculty faculty;
+	
+}

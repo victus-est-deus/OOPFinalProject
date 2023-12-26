@@ -1,0 +1,31 @@
+package Project;
+import java.util.Vector;
+
+import Enums.Language;
+import Project.User;
+
+public class Admin extends User {
+	
+
+	private Vector<Action> logFiles;
+	public Admin(String id, String password, String firstName, String lastName, String userInfo, int age,
+			boolean status, Language language, boolean isLoggedIn,Vector<Action> logFiles) {
+		super(id, password, firstName, lastName, userInfo, age, status, language, isLoggedIn);
+		
+	}
+	@Override
+	public void viewMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void viewProfile() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void sendRequest() {
+		// TODO Auto-generated method stub
+		
+	}
+}

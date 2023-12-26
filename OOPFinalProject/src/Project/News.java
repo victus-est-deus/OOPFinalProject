@@ -6,11 +6,12 @@ public class News {
 	private String content;
 	private Date date;
 	
-	public News(String topic,String content,Date date) {
-		this.setTopic(topic);
-		this.setContent(content);
-		this.setDate(date);
-	}
+	@SuppressWarnings("static-access")
+	public News(String topic, String content, Date date) {
+        this.topic = topic;
+        this.content = content;
+        this.date = this.currentDate();
+    }
 
 	public String getTopic() {
 		return topic;

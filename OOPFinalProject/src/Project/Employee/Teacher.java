@@ -94,23 +94,14 @@ public class Teacher extends Employee {
 		
 	}
 
-	@Override
-	public void viewNews() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void viewProfile() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void doResearch() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public void sendRequest() {

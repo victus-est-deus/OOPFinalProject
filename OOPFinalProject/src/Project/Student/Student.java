@@ -111,11 +111,7 @@ public class Student extends User {
 		
 	}
 
-	@Override
-	public void doResearch() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public void sendRequest() {

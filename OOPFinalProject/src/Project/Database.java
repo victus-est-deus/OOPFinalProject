@@ -16,21 +16,16 @@ import java.util.Map.Entry;
 import Enums.*;
 
 
+@SuppressWarnings("unused")
 public class Database {
     // Fields
-//    private List<User> users;
-//    private Vector<Request> requests;
-////    private HashSet<ResearchProject> researches;
-//    private HashSet<Course> courses;
-//    private HashMap<String, Vector<News>> news;
-//    private Vector<Organization> organizations;
-//    private HashMap<Employee, Message> message;
-	public static HashMap <TypeUser, HashSet <User> > users = new HashMap <>();
+    public static HashMap <TypeUser, HashSet <User> > users = new HashMap <>();
     public static HashSet <Course> courses = new HashSet <>();
     public static Vector <Request> requests = new Vector <>();
 	public static HashMap <String , Vector <News> > news = new HashMap <>();
 	public final static Map <Degree, String> idStudDegree;
 	public static Vector <Organization> organizations = new Vector<>();
+	public static Vector<Message> messages = new Vector<>();
 	
 	static {
 		idStudDegree = new HashMap<>();
@@ -45,7 +40,6 @@ public class Database {
 		HashSet <User> managers = new HashSet <User>();
 		HashSet <User> librarian = new HashSet <User>();
 		HashSet <User> rector = new HashSet<User>();
-//		admin.add(Admin.getAdmin());
 		Database.users.put(TypeUser.TEACHER, teachers);
 		Database.users.put(TypeUser.STUDENT, students);
 		Database.users.put(TypeUser.DEAN, deans);
@@ -61,9 +55,9 @@ public class Database {
 
 	}
     // Methods for serialization and deserialization
-	public static void serilaizeUsers() throws IOException {
+	public static void serializeUsers() throws IOException {
 		try {
-			FileOutputStream fos = new FileOutputStream("users.out");
+			FileOutputStream fos = new FileOutputStream("users.txt");
 			ObjectOutputStream user = new ObjectOutputStream(fos);
 			user.writeObject(users);
 			user.flush();
@@ -76,7 +70,7 @@ public class Database {
 	@SuppressWarnings("unchecked")
 	public static HashMap <TypeUser, HashSet <User> > deserializeUsers() throws IOException, ClassNotFoundException {
 		try {
-			FileInputStream fis = new FileInputStream("users.out");
+			FileInputStream fis = new FileInputStream("users.txt");
 			ObjectInputStream user = new ObjectInputStream(fis);
 			users = (HashMap <TypeUser, HashSet <User> >)user.readObject();
 			user.close();
@@ -87,13 +81,27 @@ public class Database {
 		return users;
 	}
 
-    public void serializeRequests() {
-        // Logic to serialize requests
+	public static void serilaizeRequests() throws IOException {
+		try {
+			FileOutputStream fos = new FileOutputStream("requests.txt");
+			ObjectOutputStream request = new ObjectOutputStream(fos);
+			request.writeObject(requests); request.flush(); request.close();
+			fos.close();
+		} 
+		catch(Exception e) {e.getStackTrace();}
     }
-
-    public void deserializeRequests() {
-        // Logic to deserialize requests
-    }
+	@SuppressWarnings("unchecked")
+	public static Vector <Request> deserializeRequests() throws IOException, ClassNotFoundException {
+		try {
+			FileInputStream fis = new FileInputStream("requests.txt");
+			ObjectInputStream request = new ObjectInputStream(fis);
+			requests = (Vector <Request>)request.readObject();
+			request.close(); fis.close();
+		} 
+		catch(Exception e) {e.getStackTrace();}
+		
+		return requests;
+	}
 
     public void serializeCourses() {
         // Logic to serialize courses
@@ -103,23 +111,69 @@ public class Database {
         // Logic to deserialize courses
     }
 
-    public void serializeNews() {
-        // Logic to serialize news
+    public static void serilaizeNews() throws IOException {
+		try {
+			FileOutputStream fos = new FileOutputStream("news.txt");
+			ObjectOutputStream newsList = new ObjectOutputStream(fos);
+			newsList.writeObject(news);
+			newsList.flush();
+			newsList.close();
+			fos.close();
+		} catch(Exception e) {
+			e.getStackTrace();
+		}
+    }
+	@SuppressWarnings("unchecked")
+	public static HashMap <String , Vector<News> > deserializeNews() throws IOException, ClassNotFoundException {
+		try {
+			FileInputStream fis = new FileInputStream("news.txt");
+			ObjectInputStream newsList = new ObjectInputStream(fis);
+			news = (HashMap <String , Vector<News> >) newsList.readObject();
+			newsList.close();
+			fis.close();
+			
+		} catch(Exception e) {
+			e.getStackTrace();
+		}
+		return news;
+	}
+
+	public static void SerializeAll() throws IOException {
+		serializeUsers();
+//		serilaizeCourses();
+		serilaizeNews();
+		serilaizeRequests();
+		Admin.serilaizeLogFiles();
+//		serilaizeOraganizations();
+	}
+
+	public static void DeserializeAll() throws ClassNotFoundException, IOException {
+		Database.deserializeUsers();
+//		Database.deserializeCourses();
+		Database.deserializeNews();
+		Database.deserializeRequests();
+		Admin.deserializeLogFiles();
+//		deserializeOraganizations();
+	}
+    public static void serializeMessages() throws IOException {
+        try (FileOutputStream fos = new FileOutputStream("messages.txt");
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(messages);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @SuppressWarnings("unchecked")
+	public static void deserializeMessages() throws IOException, ClassNotFoundException {
+        try (FileInputStream fis = new FileInputStream("messages.txt");
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            messages = (Vector<Message>) ois.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void deserializeNews() {
-        // Logic to deserialize news
-    }
-
-    public void serialized() {
-        // Additional serialization logic
-    }
-
-    public void deserialized() {
-        // Additional deserialization logic
-    }
-
-    // Method to show all users
+    
  
 }
 
