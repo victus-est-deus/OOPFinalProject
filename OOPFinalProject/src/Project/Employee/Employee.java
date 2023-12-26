@@ -1,8 +1,10 @@
 package Project.Employee;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Vector;
 
 import Enums.Language;
+import Project.Database;
 import Project.User;
 
 public abstract class Employee extends User {
@@ -38,10 +40,29 @@ public abstract class Employee extends User {
     }
 
     // Additional methods
-    public abstract void sendMessage();
+    public void sendMessage(String recipientId, String content) {
+        // Create a new message
+        Message newMessage = new Message(new Date(), content, this); // 'this' refers to the sender
 
-    public abstract void viewMessage();
+        // Find the recipient in the database and add the message to their messages
+        for (HashSet<User> users : Database.users.values()) {
+            for (User user : users) {
+                if (user.getId().equals(recipientId)) {
+                    if (user instanceof Employee) {
+                        Employee employee = (Employee) user;
+                        employee.getMyMessages().add(newMessage);
+                        break;
+                    }
+                }
+            }
+        }
+    }
 
+    public void viewMessage() {
+        for (Message message : this.getMyMessages()) {
+            System.out.println("Date: " + message.getDateStamp() + ", From: " + message.getSender().getFirstName() + " " + message.getSender().getLastName() + ", Message: " + message.getContent());
+        }
+    }
    
 }
 

@@ -27,11 +27,7 @@ public class Manager extends Employee {
 		this.managerPos = managerPos;
 	}
 
-	@Override
-	public void sendMessage() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void viewMessage() {

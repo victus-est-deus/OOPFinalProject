@@ -26,6 +26,8 @@ public class Database {
 	public final static Map <Degree, String> idStudDegree;
 	public static Vector <Organization> organizations = new Vector<>();
 	public static Vector<Message> messages = new Vector<>();
+	public static Vector<Book> books = new Vector<>();
+	public static HashMap<User, Book> borrowedBooks = new HashMap<>();
 	
 	static {
 		idStudDegree = new HashMap<>();
@@ -172,8 +174,42 @@ public class Database {
             e.printStackTrace();
         }
     }
+    public static void serializeBooks() throws IOException {
+        try (FileOutputStream fos = new FileOutputStream("books.txt");
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(books);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @SuppressWarnings("unchecked")
+    public static void deserializeBooks() throws IOException, ClassNotFoundException {
+        try (FileInputStream fis = new FileInputStream("books.txt");
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            books = (Vector<Book>) ois.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-    
+    public static void serializeBorrowedBooks() throws IOException {
+        try (FileOutputStream fos = new FileOutputStream("borrowedBooks.txt");
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(borrowedBooks);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @SuppressWarnings("unchecked")
+    public static void deserializeBorrowedBooks() throws IOException, ClassNotFoundException {
+        try (FileInputStream fis = new FileInputStream("borrowedBooks.txt");
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            borrowedBooks = (HashMap<User, Book>) ois.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
  
 }
 

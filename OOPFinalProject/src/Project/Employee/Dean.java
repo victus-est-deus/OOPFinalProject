@@ -24,17 +24,6 @@ public class Dean extends Employee {
 		this.faculty = faculty;
 	}
 
-	@Override
-	public void sendMessage() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void viewMessage() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void viewMenu() {

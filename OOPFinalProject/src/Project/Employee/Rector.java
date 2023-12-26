@@ -6,7 +6,6 @@ import Enums.Language;
 import Enums.TypeUser;
 import Project.Database;
 import Project.User;
-import Project.Employee.Employee;
 
 public class Rector extends Employee {
 
@@ -16,17 +15,8 @@ public class Rector extends Employee {
 		
 	}
 
-	@Override
-	public void sendMessage() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void viewMessage() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public void viewMenu() {
